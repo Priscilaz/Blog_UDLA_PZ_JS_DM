@@ -2,10 +2,12 @@ using Blog_UDLA_PZ_JS_DM.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Blog_UDLA_PZ_JS_DM.Controllers
+namespace Blog_UDLA_PZ_JS_DM.Areas.Cliente.Controllers
 {
+    [Area("Cliente")]
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
