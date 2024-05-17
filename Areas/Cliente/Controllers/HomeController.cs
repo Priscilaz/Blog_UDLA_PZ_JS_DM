@@ -14,7 +14,7 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Cliente.Controllers
         {
             _logger = logger;
         }
-
+ 
         public IActionResult Index()
         {
             return View();
