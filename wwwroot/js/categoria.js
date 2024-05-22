@@ -6,7 +6,7 @@ $(document).ready(function (){
 
 
 function cargarDatatable() {
-    dataTable = $("#tblcategorias").DataTable({
+    dataTable = $("#tblCategorias").DataTable({
         "ajax": {
             "url": "/admin/categorias/GetAll",
             "type": "GET",
@@ -20,16 +20,16 @@ function cargarDatatable() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                                <a href="/Admin/Categorias/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer; width:140px;">
-                                <i class="far fa-edit"></i> Editar
+                                <a href="/Admin/Categorias/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer; width:100px;">
+                                <i class="far fa-edit"> Editar
                                 </a>
                                 &nbsp;
-                                <a onclick=Delete("/Admin/Categorias/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer; width:140px;">
-                                <i class="far fa-trash-alt"></i> Borrar
+                                <a onclick=Delete("/Admin/Categorias/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer; width:100px;">
+                                <i class="far fa-trash-alt"> Borrar
                                 </a>
                             </div>
                             `;
-                }, "width": "40%"
+                }, "width": "30%"
             }
         ],
         "language": {
