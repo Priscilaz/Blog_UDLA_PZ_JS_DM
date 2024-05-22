@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BlogUDLA.AccesoDatos\BlogUDLA.AccesoDatos.csproj" />
   </ItemGroup>
 
