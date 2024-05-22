@@ -1,4 +1,6 @@
 using Blog_UDLA_PZ_JS_DM.Data;
+using BlogUDLA.AccesoDatos.Data.Repository;
+using BlogUDLA.AccesoDatos.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+//Agregar contenedor de trabajo al contenedor IoC inyeccion de dependencia
+builder.Services.AddScoped<IContenedorTrabajo, ContenedorTrabajo>();
+
+
+
 
 var app = builder.Build();
 
