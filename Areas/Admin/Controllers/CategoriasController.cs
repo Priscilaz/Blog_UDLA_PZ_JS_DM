@@ -19,6 +19,11 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         #region Llamadas a la APi
         [HttpGet]
