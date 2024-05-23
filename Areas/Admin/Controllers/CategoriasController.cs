@@ -1,5 +1,6 @@
 ﻿
 using BlogUDLA.AccesoDatos.Data.Repository.IRepository;
+using BlogUDLA.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog_UDLA_PZ_JS_DM.Areas.Admin.Controllers
@@ -23,6 +24,20 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Admin.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Categoria categoria)
+        {
+            if(!ModelState.IsValid)
+            {
+                //Logica para guardar en BD
+                _contenedorTrabajo.Categoria.Add(categoria);
+                _contenedorTrabajo.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoria);
         }
 
         #region Llamadas a la APi
