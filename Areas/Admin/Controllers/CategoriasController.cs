@@ -72,9 +72,20 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             return Json(new { data = _contenedorTrabajo.Categoria.GetAll()});
-        } 
+        }
 
-
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var objFromDb = _contenedorTrabajo.Categoria.Get(id);
+            if (objFromDb == null)
+            {
+                return Json(new { success = false, message = "Error borrando la categoría"});
+            }
+            _contenedorTrabajo.Categoria.Remove(objFromDb);
+            _contenedorTrabajo.Save();
+            return Json(new { success = true, message = "Categoría eliminada" });
+        }
 
         #endregion
     }
