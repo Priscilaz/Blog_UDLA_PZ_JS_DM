@@ -30,7 +30,7 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Categoria categoria)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 //Logica para guardar en BD
                 _contenedorTrabajo.Categoria.Add(categoria);
