@@ -1,4 +1,5 @@
 ﻿
+//using AspNetCore;
 using BlogUDLA.AccesoDatos.Data.Repository.IRepository;
 using BlogUDLA.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,32 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Admin.Controllers
             {
                 //Logica para guardar en BD
                 _contenedorTrabajo.Categoria.Add(categoria);
+                _contenedorTrabajo.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoria);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Categoria categoria = new Categoria();
+            categoria = _contenedorTrabajo.Categoria.Get(id);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                //Logica para actualizar en BD
+                _contenedorTrabajo.Categoria.Update(categoria);
                 _contenedorTrabajo.Save();
                 return RedirectToAction(nameof(Index));
             }
