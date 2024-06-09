@@ -1,4 +1,6 @@
 using Blog_UDLA_PZ_JS_DM.Models;
+using BlogUDLA.AccesoDatos.Data.Repository.IRepository;
+using BlogUDLA.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,17 +9,31 @@ namespace Blog_UDLA_PZ_JS_DM.Areas.Cliente.Controllers
     [Area("Cliente")]
     public class HomeController : Controller
     {
-        
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        private readonly IContenedorTrabajo _contenedorTrabajo;
+        public HomeController(IContenedorTrabajo contenedorTrabajo)
         {
-            _logger = logger;
+            _contenedorTrabajo = contenedorTrabajo;
         }
- 
+
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            HomeVM homeVM = new HomeVM()
+            {
+                Sliders = _contenedorTrabajo.Slider.GetAll(),
+                ListArticulos = _contenedorTrabajo.Articulo.GetAll()
+            };
+
+            ViewBag.IsHome = true;
+            return View(homeVM);
+        }
+        [HttpGet]
+        public IActionResult Detalle(int id) 
+        { 
+            var articuloDesdeBd = _contenedorTrabajo.Articulo.Get(id);
+            return View(articuloDesdeBd);
         }
 
         public IActionResult Privacy()
