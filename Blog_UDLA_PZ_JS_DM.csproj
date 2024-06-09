@@ -18,4 +18,8 @@
     <ProjectReference Include="..\BlogUDLA.AccesoDatos\BlogUDLA.AccesoDatos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\imagenes\articulos\" />
+  </ItemGroup>
+
 </Project>
